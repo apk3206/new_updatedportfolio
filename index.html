@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ansh Patel — AI/ML Developer & Systems Engineer</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- html2pdf -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Neural Network Particle Canvas Background -->
+    <canvas id="neural-canvas"></canvas>
+
+    <!-- Floating AI Orbs -->
+    <div class="ai-orb orb-1"></div>
+    <div class="ai-orb orb-2"></div>
+    <div class="ai-orb orb-3"></div>
+
+    <!-- Custom Cursor Follower -->
+    <div class="cursor-glow" id="cursor-glow"></div>
+
+    <!-- Navigation -->
+    <header class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#hero" class="nav-brand">
+                <div class="brand-logo">
+                    <span class="logo-bracket">&lt;</span>
+                    <span class="logo-text">AP</span>
+                    <span class="logo-bracket">/&gt;</span>
+                </div>
+                <div class="brand-info">
+                    <span class="brand-name">Ansh Patel</span>
+                    <span class="status-indicator">
+                        <span class="status-dot"></span>
+                        AI/ML Developer • Open to Roles 2027
+                    </span>
+                </div>
+            </a>
+
+            <nav class="nav-menu" id="nav-menu">
+                <a href="#about" class="nav-link"><span class="nav-link-num">01.</span> About</a>
+                <a href="#projects" class="nav-link"><span class="nav-link-num">02.</span> Projects</a>
+                <a href="#skills" class="nav-link"><span class="nav-link-num">03.</span> Skills</a>
+                <a href="#experience" class="nav-link"><span class="nav-link-num">04.</span> Timeline</a>
+                <a href="#contact" class="nav-link"><span class="nav-link-num">05.</span> Contact</a>
+            </nav>
+
+            <div class="nav-actions">
+                <button id="print-btn" class="btn btn-glow" title="Download Resume PDF">
+                    <i class="fa-solid fa-file-pdf"></i>
+                    <span>Resume</span>
+                </button>
+                <button id="theme-toggle" class="btn btn-icon" title="Toggle Theme" aria-label="Toggle Theme">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+                <button id="mobile-menu-toggle" class="btn btn-icon mobile-only" aria-label="Toggle Navigation">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation Drawer -->
+    <div class="mobile-drawer" id="mobile-drawer">
+        <a href="#about" class="mobile-link" onclick="closeMobileMenu()">01. About</a>
+        <a href="#projects" class="mobile-link" onclick="closeMobileMenu()">02. Projects</a>
+        <a href="#skills" class="mobile-link" onclick="closeMobileMenu()">03. Skills</a>
+        <a href="#experience" class="mobile-link" onclick="closeMobileMenu()">04. Timeline</a>
+        <a href="#contact" class="mobile-link" onclick="closeMobileMenu()">05. Contact</a>
+    </div>
+
+    <!-- Main Content -->
+    <main class="page-wrapper">
+
+        <!-- ==================== HERO SECTION ==================== -->
+        <section class="hero-section" id="hero">
+            <div class="hero-container">
+                <!-- Glitch text effect badge -->
+                <div class="hero-badge">
+                    <div class="ai-pulse-ring"></div>
+                    <span>🤖 AI/ML Developer &bull; Deep Learning Researcher &bull; DDU IT '27</span>
+                </div>
+
+                <h1 class="hero-title">
+                    <span class="hero-line-1">Hi, I'm <span class="gradient-text glitch-text" data-text="Ansh Patel">Ansh Patel</span></span>
+                    <span class="hero-line-2">I Build <span class="rotating-text" id="rotating-text"></span></span>
+                </h1>
+
+                <!-- Terminal-style typewriter -->
+                <div class="terminal-box">
+                    <div class="terminal-header">
+                        <span class="terminal-dot red"></span>
+                        <span class="terminal-dot yellow"></span>
+                        <span class="terminal-dot green"></span>
+                        <span class="terminal-title">ansh@portfolio:~</span>
+                    </div>
+                    <div class="terminal-body">
+                        <span class="terminal-prompt">$</span>
+                        <span class="terminal-text" id="typewriter"></span>
+                        <span class="terminal-cursor">█</span>
+                    </div>
+                </div>
+
+                <p class="hero-description">
+                    Information Technology Engineering student at <strong>Dharmsinh Desai University</strong>. 
+                    I research cutting-edge <strong>Test-Time Training (TTT)</strong> language models in PyTorch,
+                    deploy production platforms on <strong>AWS Lightsail for real clients (6+ months)</strong>,
+                    and build multimodal AI agents that rank globally.
+                </p>
+
+                <!-- CTA Buttons -->
+                <div class="hero-cta-group">
+                    <a href="#projects" class="btn btn-glow btn-lg">
+                        <i class="fa-solid fa-brain"></i> View My Work
+                    </a>
+                    <button onclick="triggerResumeDownload()" class="btn btn-outline btn-lg">
+                        <i class="fa-solid fa-download"></i> Download Resume
+                    </button>
+                    <a href="#contact" class="btn btn-ghost btn-lg">
+                        <i class="fa-solid fa-terminal"></i> Let's Connect
+                    </a>
+                </div>
+
+                <!-- Social Links -->
+                <div class="social-links">
+                    <a href="https://github.com/apk3206" target="_blank" rel="noopener" class="social-link" data-tooltip="GitHub">
+                        <i class="fa-brands fa-github"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/ansh-patel-322b2028a" target="_blank" rel="noopener" class="social-link" data-tooltip="LinkedIn">
+                        <i class="fa-brands fa-linkedin"></i>
+                    </a>
+                    <a href="https://leetcode.com/u/anshpatel032/" target="_blank" rel="noopener" class="social-link" data-tooltip="LeetCode">
+                        <i class="fa-solid fa-code"></i>
+                    </a>
+                    <a href="https://www.hackerrank.com/profile/anshpat032" target="_blank" rel="noopener" class="social-link" data-tooltip="HackerRank">
+                        <i class="fa-brands fa-hackerrank"></i>
+                    </a>
+                    <a href="https://www.codechef.com/users/anshpat032" target="_blank" rel="noopener" class="social-link" data-tooltip="CodeChef">
+                        <i class="fa-solid fa-fire"></i>
+                    </a>
+                </div>
+
+                <!-- Stats Counter -->
+                <div class="stats-row">
+                    <div class="stat-item" data-count="5">
+                        <span class="stat-number">0</span>
+                        <span class="stat-suffix">+</span>
+                        <span class="stat-label">AI & Full-Stack Projects</span>
+                    </div>
+                    <div class="stat-item" data-count="6">
+                        <span class="stat-number">0</span>
+                        <span class="stat-suffix">+ Months</span>
+                        <span class="stat-label">Production Deployment</span>
+                    </div>
+                    <div class="stat-item" data-count="950">
+                        <span class="stat-number">0</span>
+                        <span class="stat-suffix"></span>
+                        <span class="stat-label">HackerRank Global Rank</span>
+                    </div>
+                    <div class="stat-item" data-count="100">
+                        <span class="stat-number">0</span>
+                        <span class="stat-suffix">+</span>
+                        <span class="stat-label">DSA Problems Solved</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== ABOUT SECTION ==================== -->
+        <section class="section-container" id="about">
+            <div class="section-header">
+                <span class="section-tag"><i class="fa-solid fa-brain"></i> NEURAL PROFILE</span>
+                <h2 class="section-title">About & Core Competencies</h2>
+                <p class="section-subtitle">Where deep learning research meets production software engineering.</p>
+            </div>
+
+            <div class="about-grid">
+                <div class="about-card glass-card tilt-card" data-tilt>
+                    <div class="card-glow"></div>
+                    <div class="card-icon"><i class="fa-solid fa-microchip"></i></div>
+                    <h3>Deep Learning & LLM Architecture</h3>
+                    <p>
+                        Researching next-gen recurrent sequence models based on <strong>Test-Time Training (TTT)</strong> in PyTorch. 
+                        Trained and benchmarked <strong>TTT-Linear</strong> and <strong>TTT-E2E</strong> against a matched 31M Transformer baseline 
+                        on TinyStories-v2 with custom training diagnostics.
+                    </p>
+                    <div class="card-tags">
+                        <span>PyTorch</span><span>torch_ttt</span><span>CUDA</span><span>Transformers</span><span>Streamlit</span>
+                    </div>
+                </div>
+
+                <div class="about-card glass-card tilt-card" data-tilt>
+                    <div class="card-glow"></div>
+                    <div class="card-icon icon-blue"><i class="fa-solid fa-server"></i></div>
+                    <h3>Full-Stack & Cloud Systems</h3>
+                    <p>
+                        Production-grade web architecture: React 19, Node.js, Express v5, FastAPI. 
+                        Custom <strong>JWT token vaults</strong>, <strong>IP-based rate-limiting</strong>, and automated financial 
+                        transaction synchronizers on <strong>AWS Lightsail</strong>.
+                    </p>
+                    <div class="card-tags">
+                        <span>React v19</span><span>Express.js</span><span>Node.js</span><span>AWS</span><span>FastAPI</span>
+                    </div>
+                </div>
+
+                <div class="about-card glass-card tilt-card" data-tilt>
+                    <div class="card-glow"></div>
+                    <div class="card-icon icon-green"><i class="fa-solid fa-shield-halved"></i></div>
+                    <h3>System Design & Security</h3>
+                    <p>
+                        Deep understanding of DSA, OOP, and Database Management. 
+                        Practiced in Indian PAN validation, XSS sanitizers, and cryptographic 
+                        hashing ledgers for audit assurance.
+                    </p>
+                    <div class="card-tags">
+                        <span>DSA</span><span>System Design</span><span>JWT</span><span>XSS Defense</span><span>DBMS</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== PROJECTS SECTION ==================== -->
+        <section class="section-container" id="projects">
+            <div class="section-header">
+                <span class="section-tag"><i class="fa-solid fa-flask"></i> RESEARCH & ENGINEERING</span>
+                <h2 class="section-title">Featured Projects</h2>
+                <p class="section-subtitle">Real-world deployments, deep learning implementations, and AI agents.</p>
+            </div>
+
+            <!-- Filter Tabs -->
+            <div class="filter-tabs">
+                <button class="filter-btn active" data-filter="all">All (5)</button>
+                <button class="filter-btn" data-filter="ai">AI & LLM (2)</button>
+                <button class="filter-btn" data-filter="fullstack">Full-Stack (2)</button>
+                <button class="filter-btn" data-filter="health">Healthcare & AgTech (2)</button>
+            </div>
+
+            <div class="projects-grid">
+                <!-- Project 1: TTT -->
+                <div class="project-card glass-card" data-category="ai">
+                    <div class="project-header-top">
+                        <span class="project-badge badge-ai"><i class="fa-solid fa-brain"></i> AI Research • PyTorch</span>
+                        <span class="project-status green"></span>
+                    </div>
+                    <h3 class="project-name">Test-Time Training (TTT) Language Modeling</h3>
+                    <p class="project-tagline">TTT-Linear & TTT-E2E vs. 31M Transformer Baseline</p>
+                    <p class="project-summary">
+                        Replaced standard Transformer attention with online <strong>TTT</strong> linear hidden-state models 
+                        updated via gradient descent during inference. Trained on TinyStories-v2 achieving ~5.2–5.4 validation PPL.
+                    </p>
+                    <div class="project-highlights">
+                        <div class="highlight"><i class="fa-solid fa-check"></i> Matched 31M causal LM baseline comparison</div>
+                        <div class="highlight"><i class="fa-solid fa-check"></i> Integrated official <code>torch_ttt</code> package</div>
+                        <div class="highlight"><i class="fa-solid fa-check"></i> Real-time Streamlit generation dashboard</div>
+                    </div>
+                    <div class="project-tech">
+                        <span>Python</span><span>PyTorch</span><span>CUDA</span><span>torch_ttt</span><span>Streamlit</span><span>Kaggle T4</span>
+                    </div>
+                    <button class="btn btn-glow btn-sm" onclick="openProjectModal('ttt_lm')">
+                        <i class="fa-solid fa-circle-info"></i> Deep Dive
+                    </button>
+                </div>
+
+                <!-- Project 2: Mudra Nivesh -->
+                <div class="project-card glass-card" data-category="fullstack">
+                    <div class="project-header-top">
+                        <span class="project-badge badge-prod"><i class="fa-solid fa-cloud-arrow-up"></i> Live • AWS Lightsail</span>
+                        <span class="project-status blue"></span>
+                    </div>
+                    <h3 class="project-name">Mudra Nivesh — Wealth Advisory Portal</h3>
+                    <p class="project-tagline">Client CRM, Investment Calculators & Transaction Engine</p>
+                    <p class="project-summary">
+                        Deployed and maintained a production wealth advisory portal on <strong>AWS Lightsail for 6+ months</strong>. 
+                        Custom HMAC-SHA256 JWT auth, IP rate-limiting, and automated AUM engines.
+                    </p>
+                    <div class="project-highlights">
+                        <div class="highlight"><i class="fa-solid fa-check"></i> 6+ Months live client operations</div>
+                        <div class="highlight"><i class="fa-solid fa-check"></i> Custom JWT vault & IP rate limiter</div>
+                        <div class="highlight"><i class="fa-solid fa-check"></i> Automated AUM recalculation</div>
+                    </div>
+                    <div class="project-tech">
+                        <span>React v19</span><span>Vite</span><span>TailwindCSS</span><span>Express v5</span><span>AWS</span><span>JWT</span>
+                    </div>
+                    <button class="btn btn-glow btn-sm" onclick="openProjectModal('mudranivesh')">
+                        <i class="fa-solid fa-circle-info"></i> System Specs
+                    </button>
+                </div>
+
+                <!-- Project 3: AI Car Damage -->
+                <div class="project-card glass-card" data-category="ai">
+                    <div class="project-header-top">
+                        <span class="project-badge badge-hack"><i class="fa-solid fa-trophy"></i> HackerRank • #950</span>
+                        <span class="project-status green"></span>
+                    </div>
+                    <h3 class="project-name">AI Car Damage Claim Detection</h3>
+                    <p class="project-tagline">Multimodal VLM Agent for Insurance Audits</p>
+                    <p class="project-summary">
+                        Engineered a multimodal VLM agent using <code>gpt-4o-mini</code> to inspect accident photos, 
+                        transcripts, and policy data. 95% accuracy with strict JSON output schemas.
+                    </p>
+                    <div class="project-highlights">
+                        <div class="highlight"><i class="fa-solid fa-check"></i> Rank #950 / 1,773 globally</div>
+                        <div class="highlight"><i class="fa-solid fa-check"></i> Single vs. Two-Stage VLM pipelines</div>
+                        <div class="highlight"><i class="fa-solid fa-check"></i> 95% accuracy heuristic fallback</div>
+                    </div>
+                    <div class="project-tech">
+                        <span>Python</span><span>OpenCV</span><span>gpt-4o-mini</span><span>OpenRouter</span><span>VLM</span>
+                    </div>
+                    <button class="btn btn-glow btn-sm" onclick="openProjectModal('orchestrate')">
+                        <i class="fa-solid fa-circle-info"></i> System Specs
+                    </button>
+                </div>
+
+                <!-- Project 4: Doctor's Friend -->
+                <div class="project-card glass-card" data-category="health fullstack">
+                    <div class="project-header-top">
+                        <span class="project-badge badge-comm"><i class="fa-solid fa-user-doctor"></i> Healthcare</span>
+                        <span class="project-status blue"></span>
+                    </div>
+                    <h3 class="project-name">Doctor's Friend — Practice Management</h3>
+                    <p class="project-tagline">Clinical Records & Smart Messaging Engine</p>
+                    <p class="project-summary">
+                        Clinic management suite with appointment scheduling, diagnostic histories, 
+                        and an intelligent <strong>Dual-Mode WhatsApp Broadcast Engine</strong>.
+                    </p>
+                    <div class="project-highlights">
+                        <div class="highlight"><i class="fa-solid fa-check"></i> Zero-cost WhatsApp broadcast queue</div>
+                        <div class="highlight"><i class="fa-solid fa-check"></i> Clinical cohort filtering</div>
+                        <div class="highlight"><i class="fa-solid fa-check"></i> Full diagnostic audit trail</div>
+                    </div>
+                    <div class="project-tech">
+                        <span>React.js</span><span>Node.js</span><span>Express</span><span>MongoDB</span><span>Twilio</span>
+                    </div>
+                    <button class="btn btn-glow btn-sm" onclick="openProjectModal('doctorfriend')">
+                        <i class="fa-solid fa-circle-info"></i> System Specs
+                    </button>
+                </div>
+
+                <!-- Project 5: Khedut Bandhu -->
+                <div class="project-card glass-card" data-category="health fullstack">
+                    <div class="project-header-top">
+                        <span class="project-badge badge-agri"><i class="fa-solid fa-seedling"></i> AgTech • CNN</span>
+                        <span class="project-status green"></span>
+                    </div>
+                    <h3 class="project-name">Khedut Bandhu — Farmer's AI Ecosystem</h3>
+                    <p class="project-tagline">FastAPI CNN Crop Diagnostics & APMC Marketplace</p>
+                    <p class="project-summary">
+                        Comprehensive platform connecting farmers with buyers and experts. 
+                        CNN on PlantVillage via FastAPI for instant leaf disease diagnosis.
+                    </p>
+                    <div class="project-highlights">
+                        <div class="highlight"><i class="fa-solid fa-check"></i> CNN crop leaf diagnosis service</div>
+                        <div class="highlight"><i class="fa-solid fa-check"></i> APMC commodity price ticker</div>
+                        <div class="highlight"><i class="fa-solid fa-check"></i> Aadhaar KYC & UPI refund flows</div>
+                    </div>
+                    <div class="project-tech">
+                        <span>React.js</span><span>FastAPI</span><span>TensorFlow</span><span>MongoDB</span><span>Digio</span>
+                    </div>
+                    <button class="btn btn-glow btn-sm" onclick="openProjectModal('khedutbandhu')">
+                        <i class="fa-solid fa-circle-info"></i> System Specs
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== SKILLS SECTION ==================== -->
+        <section class="section-container" id="skills">
+            <div class="section-header">
+                <span class="section-tag"><i class="fa-solid fa-network-wired"></i> TECH STACK</span>
+                <h2 class="section-title">Skills & Technologies</h2>
+                <p class="section-subtitle">Proficiencies mapped by domain experience.</p>
+            </div>
+
+            <!-- Animated Skill Bars -->
+            <div class="skills-grid">
+                <div class="skill-category glass-card">
+                    <h3><i class="fa-solid fa-brain"></i> AI & Machine Learning</h3>
+                    <div class="skill-bar-group">
+                        <div class="skill-bar" data-skill="PyTorch & CUDA" data-level="90"></div>
+                        <div class="skill-bar" data-skill="TTT / Transformers" data-level="85"></div>
+                        <div class="skill-bar" data-skill="VLMs & OpenAI APIs" data-level="80"></div>
+                        <div class="skill-bar" data-skill="OpenCV / TensorFlow" data-level="75"></div>
+                    </div>
+                </div>
+
+                <div class="skill-category glass-card">
+                    <h3><i class="fa-solid fa-laptop-code"></i> Languages</h3>
+                    <div class="skill-bar-group">
+                        <div class="skill-bar" data-skill="Python" data-level="92"></div>
+                        <div class="skill-bar" data-skill="JavaScript (ES6+)" data-level="88"></div>
+                        <div class="skill-bar" data-skill="C++" data-level="82"></div>
+                        <div class="skill-bar" data-skill="Java / SQL" data-level="75"></div>
+                    </div>
+                </div>
+
+                <div class="skill-category glass-card">
+                    <h3><i class="fa-solid fa-layer-group"></i> Web & Backend</h3>
+                    <div class="skill-bar-group">
+                        <div class="skill-bar" data-skill="React.js v19 / Vite" data-level="90"></div>
+                        <div class="skill-bar" data-skill="Node.js / Express v5" data-level="88"></div>
+                        <div class="skill-bar" data-skill="FastAPI / Streamlit" data-level="78"></div>
+                        <div class="skill-bar" data-skill="MongoDB / PostgreSQL" data-level="80"></div>
+                    </div>
+                </div>
+
+                <div class="skill-category glass-card">
+                    <h3><i class="fa-solid fa-cloud"></i> Cloud & DevOps</h3>
+                    <div class="skill-bar-group">
+                        <div class="skill-bar" data-skill="AWS Lightsail" data-level="88"></div>
+                        <div class="skill-bar" data-skill="Git / GitHub" data-level="85"></div>
+                        <div class="skill-bar" data-skill="Linux / Bash" data-level="75"></div>
+                        <div class="skill-bar" data-skill="JWT / Security" data-level="82"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Floating Tech Icons -->
+            <div class="tech-orbit">
+                <div class="orbit-ring ring-1">
+                    <span class="orbit-icon" style="--i:0"><i class="fa-brands fa-python"></i></span>
+                    <span class="orbit-icon" style="--i:1"><i class="fa-brands fa-react"></i></span>
+                    <span class="orbit-icon" style="--i:2"><i class="fa-brands fa-node-js"></i></span>
+                    <span class="orbit-icon" style="--i:3"><i class="fa-brands fa-aws"></i></span>
+                </div>
+                <div class="orbit-center">
+                    <i class="fa-solid fa-robot"></i>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== EXPERIENCE TIMELINE ==================== -->
+        <section class="section-container" id="experience">
+            <div class="section-header">
+                <span class="section-tag"><i class="fa-solid fa-timeline"></i> JOURNEY</span>
+                <h2 class="section-title">Experience & Education</h2>
+                <p class="section-subtitle">Commercial engagements, research milestones, and academic foundation.</p>
+            </div>
+
+            <div class="timeline-container">
+                <div class="timeline-line"></div>
+
+                <div class="timeline-item" data-aos="fade-right">
+                    <div class="timeline-marker"><i class="fa-solid fa-briefcase"></i></div>
+                    <div class="timeline-content glass-card">
+                        <div class="timeline-header">
+                            <div>
+                                <h3>Full-Stack Developer (Client Deployment)</h3>
+                                <span class="timeline-company">Mudra Nivesh — Wealth Advisory</span>
+                            </div>
+                            <span class="timeline-badge">6+ Months Live</span>
+                        </div>
+                        <p>
+                            Configured, deployed, and maintained production portal on <strong>AWS Lightsail</strong>. 
+                            Built JWT auth, IP rate-limiting, and automated AUM synchronization engines.
+                        </p>
+                        <div class="timeline-tags">
+                            <span>AWS</span><span>React 19</span><span>Express.js</span><span>JWT</span><span>Rate Limiting</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item" data-aos="fade-left">
+                    <div class="timeline-marker"><i class="fa-solid fa-atom"></i></div>
+                    <div class="timeline-content glass-card">
+                        <div class="timeline-header">
+                            <div>
+                                <h3>Deep Learning & LLM Researcher</h3>
+                                <span class="timeline-company">Test-Time Training (TTT) Language Modeling</span>
+                            </div>
+                            <span class="timeline-badge">PyTorch Research</span>
+                        </div>
+                        <p>
+                            Implemented TTT-Linear and TTT-E2E architectures. Benchmarked against 31M baseline 
+                            on TinyStories-v2 with AdamW tuning and interactive Streamlit inspector.
+                        </p>
+                        <div class="timeline-tags">
+                            <span>PyTorch</span><span>TTT-Linear</span><span>CUDA</span><span>Streamlit</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item" data-aos="fade-right">
+                    <div class="timeline-marker"><i class="fa-solid fa-trophy"></i></div>
+                    <div class="timeline-content glass-card">
+                        <div class="timeline-header">
+                            <div>
+                                <h3>Global Finalist — AI Agent Hackathon</h3>
+                                <span class="timeline-company">HackerRank Orchestrate (June 2026)</span>
+                            </div>
+                            <span class="timeline-badge">#950 / 1,773</span>
+                        </div>
+                        <p>
+                            Built multimodal AI car damage claim agent. Compared VLM reasoning pipelines 
+                            and achieved 95% accuracy with heuristic fallbacks.
+                        </p>
+                        <div class="timeline-tags">
+                            <span>VLM</span><span>gpt-4o-mini</span><span>OpenCV</span><span>JSON Schema</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item" data-aos="fade-left">
+                    <div class="timeline-marker"><i class="fa-solid fa-graduation-cap"></i></div>
+                    <div class="timeline-content glass-card">
+                        <div class="timeline-header">
+                            <div>
+                                <h3>B.E. in Information Technology</h3>
+                                <span class="timeline-company">Dharmsinh Desai University (DDU), Nadiad</span>
+                            </div>
+                            <span class="timeline-badge">Graduation: 2027</span>
+                        </div>
+                        <p>
+                            Core: DSA, OOP, DBMS, Operating Systems, Computer Networks, System Architecture.
+                        </p>
+                        <div class="timeline-tags">
+                            <span>DSA</span><span>OOP</span><span>DBMS</span><span>OS</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== CONTACT SECTION ==================== -->
+        <section class="section-container" id="contact">
+            <div class="section-header">
+                <span class="section-tag"><i class="fa-solid fa-satellite-dish"></i> GET IN TOUCH</span>
+                <h2 class="section-title">Let's Build Something</h2>
+                <p class="section-subtitle">Open for internships, placements, and collaboration opportunities.</p>
+            </div>
+
+            <div class="contact-grid">
+                <div class="contact-card glass-card" onclick="copyContact('Email', 'anshpat032@gmail.com')">
+                    <i class="fa-solid fa-envelope"></i>
+                    <h4>Email</h4>
+                    <span>anshpat032@gmail.com</span>
+                    <small>Click to copy</small>
+                </div>
+                <div class="contact-card glass-card" onclick="copyContact('Phone', '+91 9428456272')">
+                    <i class="fa-solid fa-phone"></i>
+                    <h4>Phone</h4>
+                    <span>+91 9428456272</span>
+                    <small>Click to copy</small>
+                </div>
+                <a href="https://github.com/apk3206" target="_blank" class="contact-card glass-card">
+                    <i class="fa-brands fa-github"></i>
+                    <h4>GitHub</h4>
+                    <span>github.com/apk3206</span>
+                    <small>View repositories</small>
+                </a>
+                <a href="https://www.linkedin.com/in/ansh-patel-322b2028a" target="_blank" class="contact-card glass-card">
+                    <i class="fa-brands fa-linkedin"></i>
+                    <h4>LinkedIn</h4>
+                    <span>Ansh Patel</span>
+                    <small>Connect with me</small>
+                </a>
+            </div>
+        </section>
+
+        <!-- ==================== HIDDEN PRINTABLE RESUME ==================== -->
+        <section id="printable-resume" class="printable-resume" style="display:none;">
+            <div class="resume-content">
+                <h1 style="text-align:center;font-size:1.6rem;margin-bottom:0.3rem;">PATEL ANSH KINJALKRUSHNA</h1>
+                <p style="text-align:center;font-size:0.85rem;color:#475569;margin-bottom:1rem;">
+                    +91 9428456272 | anshpat032@gmail.com | 
+                    <a href="https://github.com/apk3206">GitHub</a> | 
+                    <a href="https://www.linkedin.com/in/ansh-patel-322b2028a">LinkedIn</a> | 
+                    <a href="https://leetcode.com/u/anshpatel032/">LeetCode</a>
+                </p>
+                <hr>
+                <h3 style="margin:0.8rem 0 0.4rem;">PROFESSIONAL SUMMARY</h3>
+                <p style="font-size:0.85rem;">Software Developer and IT Engineering student at DDU with experience in web applications, digital systems, and deep learning architectures. Deployed production portals for real-time clients (6+ months) on AWS Lightsail. Researching Test-Time Training (TTT) language model architectures in PyTorch.</p>
+                <h3 style="margin:0.8rem 0 0.4rem;">EDUCATION</h3>
+                <p style="font-size:0.85rem;"><strong>B.E. in Information Technology</strong> — Dharmsinh Desai University (DDU), Nadiad | Graduation: 2027</p>
+                <h3 style="margin:0.8rem 0 0.4rem;">TECHNICAL SKILLS</h3>
+                <p style="font-size:0.85rem;"><strong>Languages:</strong> Python, C++, Java, JavaScript, SQL | <strong>AI/ML:</strong> PyTorch, CUDA, TTT, Transformers, OpenCV, TensorFlow | <strong>Web:</strong> React v19, Node.js, Express v5, FastAPI, Streamlit | <strong>Cloud:</strong> AWS Lightsail, Git, JWT</p>
+                <h3 style="margin:0.8rem 0 0.4rem;">PROJECTS</h3>
+                <p style="font-size:0.85rem;"><strong>1. TTT Language Modeling</strong> — PyTorch, CUDA, torch_ttt, Streamlit<br>Implemented TTT-Linear & TTT-E2E recurrent architectures vs. 31M Transformer baseline on TinyStories-v2. Achieved ~5.2–5.4 validation PPL.</p>
+                <p style="font-size:0.85rem;"><strong>2. AI Car Damage Detection (HackerRank Orchestrate)</strong> — Python, OpenCV, gpt-4o-mini<br>Multimodal VLM agent for insurance claims. Rank #950/1,773 globally. 95% accuracy.</p>
+                <p style="font-size:0.85rem;"><strong>3. Mudra Nivesh</strong> — React v19, Express v5, AWS Lightsail, JWT<br>Wealth advisory portal deployed 6+ months. JWT vault, IP rate-limiting, automated AUM engines.</p>
+                <p style="font-size:0.85rem;"><strong>4. Doctor's Friend</strong> — React, Node.js, MongoDB, Twilio<br>Clinic management with Dual-Mode WhatsApp Broadcast Engine.</p>
+                <p style="font-size:0.85rem;"><strong>5. Khedut Bandhu</strong> — React, FastAPI, TensorFlow, MongoDB<br>Agrarian platform with CNN crop diagnostics and APMC marketplace.</p>
+                <h3 style="margin:0.8rem 0 0.4rem;">CERTIFICATIONS</h3>
+                <p style="font-size:0.85rem;">HackerRank Orchestrate (#950/1,773) | AWS Cloud Computing | LeetCode 100+ DSA Problems</p>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>Designed & Built by <strong>Ansh Patel</strong></p>
+            <p class="footer-sub">AI/ML Developer • Full-Stack Engineer • DDU IT '27</p>
+        </div>
+    </footer>
+
+    <!-- Project Modal -->
+    <div class="modal-overlay" id="project-modal">
+        <div class="modal-container glass-card">
+            <button class="modal-close" onclick="closeProjectModal()">&times;</button>
+            <div id="modal-body-content"></div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
